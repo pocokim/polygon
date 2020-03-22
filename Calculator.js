@@ -1,24 +1,39 @@
-//원의 1개의 넓이 구하는 함수
+const polyLogArr = [];
+const pushLog = polygon => {
+  polyLogArr.push(polygon);
+};
+const printExecutionSequence = () => {
+  let logging = '';
+  logging = polyLogArr.toString();
+  console.log('계산수행순서: ' + logging);
+};
+
+//원의 1개의 넓이 구하는 함수 (반지름)
 const getCircle = r => {
   let circleArea = r * r * Math.PI;
+  pushLog('circle');
   return circleArea;
 };
-//원의 넓이의 합을 구하는 재귀 함수
+//원의 넓이의 합을 구하는 재귀 함수 (반지름, n개)
 const sumCircle = (r, n) => {
+  let circleArea = r * r * Math.PI;
   if (n === 0) {
+    pushLog('circle');
     return 0;
   } else {
-    return getCircle(r) + sumCircle(r + 1, n - 1);
+    return circleArea + sumCircle(r + 1, n - 1);
   }
 };
 //사각형의 넓이 구하는 함수 (가로, 세로)
 const getRectangle = (w, h) => {
   let rectangleArea = w * h;
+  pushLog('rect');
   return rectangleArea;
 };
 //사다리꼴의 넓이 구하는 함수 (윗변, 아랫변, 높이)
 const getTrapezoid = (uw, dw, h) => {
   let trapezoidArea = (uw + dw) * h / 2;
+  pushLog('trapezoid');
   return trapezoidArea;
 };
 
@@ -43,5 +58,6 @@ module.exports = {
   getArea,
   getCircle,
   getRectangle,
-  getTrapezoid
+  getTrapezoid,
+  printExecutionSequence
 };
