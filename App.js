@@ -1,4 +1,4 @@
-const f = require('./functions');
+const f = require('./Calculator');
 
 //반지름 입력
 let r = 1;
